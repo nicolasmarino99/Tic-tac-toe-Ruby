@@ -1,31 +1,51 @@
+class GameLayout
+  board = [ 1, 2, 3, 
+            4, 5, 6,
+            7, 8, 9 ]
+
+  def print_board(board)
+    puts " #{board[0]} | #{board[1]} | #{board[2]} "
+    puts '-----------'
+    puts " #{board[3]} | #{board[4]} | #{board[5]} "
+    puts '-----------'
+    puts " #{board[6]} | #{board[7]} | #{board[8]} "  
+  end
+end
+
+class GameRules
+end
+
+class 
+
+class Player
+end
+
+
+
+
+
+
+
+
 
 win = false
 
-board = [1, 2, 3, 
-         4, 5, 6,
-         7, 8, 9]
 
-def print_board(board)
-  puts " #{board[0]} | #{board[1]} | #{board[2]} "
-  puts '-----------'
-  puts " #{board[3]} | #{board[4]} | #{board[5]} "
-  puts '-----------'
-  puts " #{board[6]} | #{board[7]} | #{board[8]} "  
-end
 
 def winner(board)
   winner = false
   
-  # test rows
-  3.times do |row|
-    row_array = []
-    3.times do |col|
-      row_array << board[row * 3 + col]
-    end
-    if row_array.all? { |cell| cell == 'X' }
-      winner = "X"
-    elsif row_array.all? { |cell| cell == 'O' }
-      winner = "O"
+  def test_rows
+    3.times do |row|
+      row_array = []
+      3.times do |col|
+        row_array << board[row * 3 + col]
+      end
+      if row_array.all? { |cell| cell == 'X' }
+        winner = "X"
+      elsif row_array.all? { |cell| cell == 'O' }
+        winner = "O"
+      end
     end
   end
 
