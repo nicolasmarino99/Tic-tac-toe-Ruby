@@ -2,11 +2,13 @@
 
 class Game
   attr_reader :winner
-  def initialize
+  def initialize(player_one_mark = "◯", player_two_mark = "✕")
     @board = [1, 2, 3,
               4, 5, 6,
               7, 8, 9]
     @winner = ''
+    @player_one_mark = player_two_mark
+    @player_two_mark = player_two_mark
   end
 
   def winner?
@@ -42,11 +44,11 @@ class Game
   end
 
   def check_consecutive?(orientation)
-    if orientation.all? { |cell| cell == 'X' }
-      @winner = 'X'
+    if orientation.all? { |cell| cell == @player_one_mark }
+      @winner = @player_one_mark
       return true
-    elsif orientation.all? { |cell| cell == 'O' }
-      @winner = 'O'
+    elsif orientation.all? { |cell| cell == @player_two_mark }
+      @winner = @player_two_mark
       return true
     end
     false
