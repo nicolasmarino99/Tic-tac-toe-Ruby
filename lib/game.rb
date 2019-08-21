@@ -1,48 +1,56 @@
 # frozen_string_literal: true
 
 class Game
-  def winner_orientation(board)
-    winner = false
+  attr_reader :winner
+  def initialize
+    @board = [1, 2, 3,
+              4, 5, 6,
+              7, 8, 9]
+    @winner = ''
+  end
 
-    # test rows
-    3.times do |row|
-      row_array = []
-      3.times do |col|
-        row_array << board[row * 3 + col]
-      end
-      winner = is_winner(row_array)
-    end
+  def winner?
 
-    # test columns
-    3.times do |row|
-      col_array = []
-      3.times do |col|
-        col_array << board[col * 3 + row]
-      end
-      winner = is_winner(col_array)
-    end
+    return true if check_array?('rows')
+    return true if check_array?('columns')
 
-    # test diagonals
     diagonals = [
-      [board[0], board[4], board[8]],
-      [board[2], board[4], board[6]]
+      [@board[0], @board[4], @board[8]],
+      [@board[2], @board[4], @board[6]]
     ]
     diagonals.each do |diagonal|
-      winner = is_winner(diagonal)
+      return true if check_consecutive?(diagonal)
     end
+  
+    false
 
-    winner
   end
 
   private
 
-  def winner(orientation)
-    winner = ''
-    if orientation.all? { |cell| cell == 'X' }
-      winner = 'X'
-    elsif orientation.all? { |cell| cell == 'O' }
-      winner = 'O'
+  def check_array?(orientation)
+    3.times do |row|
+      array = []
+      3.times do |col|
+        if orientation == "columns"
+          array << @board[col * 3 + row]
+        else 
+          array << @board[row * 3 + col]
+        end
+      end
+      return true if check_consecutive?(array)
     end
-    winner
+    false
+  end
+
+  def check_consecutive?(orientation)
+    if orientation.all? { |cell| cell == 'X' }
+      @winner = 'X'
+      return true
+    elsif orientation.all? { |cell| cell == 'O' }
+      @winner = 'O'
+      return true
+    end
+    return false
   end
 end
