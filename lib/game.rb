@@ -10,7 +10,6 @@ class Game
   end
 
   def winner?
-
     return true if check_array?('rows')
     return true if check_array?('columns')
 
@@ -21,9 +20,8 @@ class Game
     diagonals.each do |diagonal|
       return true if check_consecutive?(diagonal)
     end
-  
-    false
 
+    false
   end
 
   private
@@ -32,11 +30,11 @@ class Game
     3.times do |row|
       array = []
       3.times do |col|
-        if orientation == "columns"
-          array << @board[col * 3 + row]
-        else 
-          array << @board[row * 3 + col]
-        end
+        array << if orientation == 'columns'
+                   @board[col * 3 + row]
+                 else
+                   @board[row * 3 + col]
+                 end
       end
       return true if check_consecutive?(array)
     end
@@ -51,6 +49,6 @@ class Game
       @winner = 'O'
       return true
     end
-    return false
+    false
   end
 end
