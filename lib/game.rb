@@ -1,8 +1,9 @@
-class Game
+# frozen_string_literal: true
 
-  def winner(board)
+class Game
+  def winner_orientation(board)
     winner = false
-    
+
     # test rows
     3.times do |row|
       row_array = []
@@ -11,7 +12,7 @@ class Game
       end
       winner = is_winner(row_array)
     end
-  
+
     # test columns
     3.times do |row|
       col_array = []
@@ -20,31 +21,28 @@ class Game
       end
       winner = is_winner(col_array)
     end
-  
-    #test diagonals
+
+    # test diagonals
     diagonals = [
-                 [board[0], board[4], board[8]],
-                 [board[2], board[4], board[6]]
-                ]
+      [board[0], board[4], board[8]],
+      [board[2], board[4], board[6]]
+    ]
     diagonals.each do |diagonal|
       winner = is_winner(diagonal)
     end
-  
-    winner 
-  end
 
-  private
-  def is_winner(orientation) 
-    winner = ""
-    if orientation.all? { |cell| cell == 'X' }
-    winner = "X"
-    elsif orientation.all? { |cell| cell == 'O' }
-    winner = "O"
-    end
     winner
   end
 
+  private
 
-
-
+  def winner(orientation)
+    winner = ''
+    if orientation.all? { |cell| cell == 'X' }
+      winner = 'X'
+    elsif orientation.all? { |cell| cell == 'O' }
+      winner = 'O'
+    end
+    winner
+  end
 end
