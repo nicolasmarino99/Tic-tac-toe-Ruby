@@ -25,10 +25,13 @@ class Game
     end
 
     if @board.winner?
-      puts "The winner is '#{@board.winner}'"
+      puts ""
+      puts "The winner is '#{@board.winner}'!"
     else  
       puts "I's a tie."
     end
+
+    @board.print
 
   end
 end
