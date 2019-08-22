@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+require 'paint'
 
 class Board
   attr_accessor :board
@@ -14,11 +15,11 @@ class Board
 
   def print
     puts ""
-    puts " #{@board[0]} | #{@board[1]} | #{@board[2]} "
+    puts " #{print_cell(@board[0])} | #{print_cell(@board[1])} | #{print_cell(@board[2])} "
     puts '-----------'
-    puts " #{@board[3]} | #{@board[4]} | #{@board[5]} "
+    puts " #{print_cell(@board[3])} | #{print_cell(@board[4])} | #{print_cell(@board[5])} "
     puts '-----------'
-    puts " #{@board[6]} | #{@board[7]} | #{@board[8]} "
+    puts " #{print_cell(@board[6])} | #{print_cell(@board[7])} | #{print_cell(@board[8])} "
     puts ""
   end
 
@@ -42,6 +43,16 @@ class Board
   end
 
   private
+
+  def print_cell(value)
+    if value == @player1.mark
+      Paint[value, :blue, :bright]
+    elsif value == @player2.mark
+      Paint[value, :red, :bright]
+    else
+      Paint[value, :gray]
+    end
+  end
 
   def check_array?(orientation)
     3.times do |row|

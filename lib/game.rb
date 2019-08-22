@@ -1,3 +1,4 @@
+require "paint"
 require_relative "./player.rb"
 require_relative "./board.rb"
 
@@ -26,7 +27,7 @@ class Game
 
     if @board.winner?
       puts ""
-      puts "The winner is '#{@board.winner}'!"
+      puts Paint["The winner is '#{@board.winner}'!", :green, :bright]
     else  
       puts "I's a tie."
     end
