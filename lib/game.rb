@@ -1,14 +1,17 @@
 # frozen_string_literal: true
 
+require_relative '../lib/board.rb'
+require_relative '../lib/player.rb'
+
 class Game
   attr_reader :winner
-  def initialize(player_one_mark = "◯", player_two_mark = "✕")
-    @board = [1, 2, 3,
-              4, 5, 6,
-              7, 8, 9]
+  def initialize()
+    @giboard = Board.new()
     @winner = ''
     @player_one_mark = player_two_mark
     @player_two_mark = player_two_mark
+    @player_one = Player.new("Mauricio")
+    @player_one = Player.new("Nico")
   end
 
   def winner?

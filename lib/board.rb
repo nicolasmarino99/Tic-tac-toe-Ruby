@@ -1,8 +1,8 @@
 # frozen_string_literal: true
 require 'paint'
 
-class GameLayout
-  def initialize
+class Board
+  def initialize(player_one_mark = "◯", player_two_mark = "✕")
     @board = [1, 2, 3,
       4, 5, 6,
       7, 8, 9]
