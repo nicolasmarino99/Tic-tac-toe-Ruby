@@ -11,11 +11,10 @@ class Player
     print "Player '#{@name}' move: "
     move = gets.chomp.to_i
     while board[move - 1] != move
-      puts "That position is taken!"
-      print "Chose another position: "
+      puts 'That position is taken!'
+      print 'Chose another position: '
       move = gets.chomp.to_i
     end
-    board[move - 1] = @mark 
+    board[move - 1] = @mark
   end
-
 end

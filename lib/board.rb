@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 require 'paint'
 
 class Board
@@ -7,20 +8,20 @@ class Board
   def initialize(player1, player2)
     @player1 = player1
     @player2 = player2
-    @board = [1,2,3,
-              4,5,6,
-              7,8,9]
-    @winner = ""          
+    @board = [1, 2, 3,
+              4, 5, 6,
+              7, 8, 9]
+    @winner = ''
   end
 
   def print
-    puts ""
+    puts ''
     puts "             #{print_cell(@board[0])} | #{print_cell(@board[1])} | #{print_cell(@board[2])} "
     puts '            ---+---+---'
     puts "             #{print_cell(@board[3])} | #{print_cell(@board[4])} | #{print_cell(@board[5])} "
     puts '            ---+---+---'
     puts "             #{print_cell(@board[6])} | #{print_cell(@board[7])} | #{print_cell(@board[8])} "
-    puts ""
+    puts ''
   end
 
   def winner?
@@ -39,7 +40,7 @@ class Board
   end
 
   def tie?
-    @board.count("X") == 5       
+    @board.count('X') == 5
   end
 
   private
@@ -79,5 +80,4 @@ class Board
     end
     false
   end
-
 end

@@ -1,15 +1,15 @@
-require "paint"
-require_relative "./player.rb"
-require_relative "./board.rb"
+# frozen_string_literal: true
+
+require 'paint'
+require_relative './player.rb'
+require_relative './board.rb'
 
 class Game
   def initialize(player1, player2)
-
-    @player1 = Player.new(player1, "X")
-    @player2 = Player.new(player2, "O")
+    @player1 = Player.new(player1, 'X')
+    @player2 = Player.new(player2, 'O')
 
     @board = Board.new(@player1, @player2)
-
   end
 
   def play
@@ -18,21 +18,20 @@ class Game
 
       @player1.move(@board.board)
       break if @board.winner? || @board.tie?
-      
+
       @board.print
-      
+
       @player2.move(@board.board)
       break if @board.winner? || @board.tie?
     end
 
     if @board.winner?
-      puts ""
+      puts ''
       puts Paint["The winner is '#{@board.winner}'!", :green, :bright]
-    else  
+    else
       puts "I's a tie."
     end
 
     @board.print
-
   end
 end
