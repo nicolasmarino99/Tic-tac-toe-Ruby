@@ -4,8 +4,8 @@ require_relative "./board.rb"
 class Game
   def initialize(player1, player2)
 
-    @player1 = Player.new("X", player1)
-    @player2 = Player.new("O", player2)
+    @player1 = Player.new(player1, "X")
+    @player2 = Player.new(player2, "O")
 
     @board = Board.new(@player1, @player2)
 

@@ -2,9 +2,9 @@
 
 class Player
   attr_reader :name, :mark
-  def initialize(mark, name)
-    @mark = mark
+  def initialize(name, mark)
     @name = name
+    @mark = mark
   end
 
   def move(board)
