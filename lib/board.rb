@@ -1,12 +1,21 @@
 # frozen_string_literal: true
 
 class Board
+  attr_accessor :board
   attr_reader :winner
   def initialize
     @board = [1,2,3,
               4,5,6,
               7,8,9]
     @winner = ""          
+  end
+
+  def print
+    puts " #{@board[0]} | #{@board[1]} | #{@board[2]} "
+    puts '-----------'
+    puts " #{@board[3]} | #{@board[4]} | #{@board[5]} "
+    puts '-----------'
+    puts " #{@board[6]} | #{@board[7]} | #{@board[8]} "
   end
 
   def winner?
@@ -28,8 +37,6 @@ class Board
     @board.count("X") == 5       
   end
 
-
-
   private
 
   def check_array?(orientation)
@@ -48,11 +55,11 @@ class Board
   end
 
   def check_consecutive?(orientation)
-    if orientation.all? { |cell| cell == @player_one_mark }
-      @winner = @player_one_mark
+    if orientation.all? { |cell| cell == "X" }
+      @winner = "X"
       return true
-    elsif orientation.all? { |cell| cell == @player_two_mark }
-      @winner = @player_two_mark
+    elsif orientation.all? { |cell| cell == "O" }
+      @winner = "O"
       return true
     end
     false

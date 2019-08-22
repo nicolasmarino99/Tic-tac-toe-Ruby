@@ -1,11 +1,11 @@
-require_relative "./lib/player.rb"
-require_relative "./lib/board.rb"
+require_relative "./player.rb"
+require_relative "./board.rb"
 
 class Game
   def initialize
     @board = Board.new
-    @player1 = Player.new(@board)
-    @player2 = Player.new(@board)
+    @player1 = Player.new(@board.board, "X", "Player1")
+    @player2 = Player.new(@board.board, "O", "Player2")
   end
 
   def play
@@ -20,5 +20,12 @@ class Game
       @player2.move
       break if @board.winner? || @board.tie?
     end
+
+    if @board.winner?
+      puts "The winner is '#{@board.winner}'"
+    else  
+      puts "I's a tie."
+    end
+
   end
 end
