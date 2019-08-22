@@ -1,14 +1,36 @@
-class Player
-  attr_reader :moves
-  def intialize
-    @moves = 0
-  end
-  def move
 
-    if move1 == "X" || move2 == "O"
-    @moves += 1
+
+class Player
+  attr_reader :moves, :name
+  def initialize(name)
+    @moves = 0
+    @name = name
+  end
+  def move(board)
+
+
+    
+     puts "Player's #{@name} move: "
+     move1 = gets.chomp.to_i
+     while board[move1 - 1] != move1
+       puts "That position is taken!"
+       puts "Chose another position: "
+       move1 = gets.chomp.to_i
+     end
+     board[move1 - 1] = "X" 
+    
+     moves += 1
+     puts "moves: #{moves}"
+     break if (winner(board) || moves == 5)
+    
     
   end
+
+  def 
+
+
+
+
 
   def history_moves
 

@@ -10,57 +10,6 @@ else
 end
 
 
-
-win = false
-
-
-
-# def winner(board)
-#   winner = false
-  
-#   def test_rows
-#     3.times do |row|
-#       row_array = []
-#       3.times do |col|
-#         row_array << board[row * 3 + col]
-#       end
-#       if row_array.all? { |cell| cell == 'X' }
-#         winner = "X"
-#       elsif row_array.all? { |cell| cell == 'O' }
-#         winner = "O"
-#       end
-#     end
-#   end
-
-#   # test columns
-#   3.times do |row|
-#     col_array = []
-#     3.times do |col|
-#       col_array << board[col * 3 + row]
-#     end
-#     if col_array.all? { |cell| cell == 'X' }
-#       winner = "X"
-#     elsif col_array.all? { |cell| cell == 'O' }
-#       winner = "O"
-#     end
-#   end
-
-#   #test diagonals
-#   diagonals = [
-#                [board[0], board[4], board[8]],
-#                [board[2], board[4], board[6]]
-#               ]
-#   diagonals.each do |diagonal|
-#     if diagonal.all? { |cell| cell == 'X' }
-#       winner = "X"
-#     elsif diagonal.all? { |cell| cell == 'O' }
-#       winner = "O"
-#     end
-#   end
-
-#   winner
-# end
-
 # moves = 0
 
 # loop do
