@@ -13,7 +13,7 @@ class Player
     move = gets.chomp.to_i
     while @board[move - 1] != move
       puts "That position is taken!"
-      puts "Chose another position: "
+      print "Chose another position: "
       move = gets.chomp.to_i
     end
     @board[move - 1] = @mark 

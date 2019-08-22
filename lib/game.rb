@@ -2,10 +2,10 @@ require_relative "./player.rb"
 require_relative "./board.rb"
 
 class Game
-  def initialize
+  def initialize(player1, player2)
     @board = Board.new
-    @player1 = Player.new(@board.board, "X", "Player1")
-    @player2 = Player.new(@board.board, "O", "Player2")
+    @player1 = Player.new(@board.board, "X", player1)
+    @player2 = Player.new(@board.board, "O", player2)
   end
 
   def play
