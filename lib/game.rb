@@ -3,21 +3,24 @@ require_relative "./board.rb"
 
 class Game
   def initialize(player1, player2)
-    @board = Board.new
-    @player1 = Player.new(@board.board, "X", player1)
-    @player2 = Player.new(@board.board, "O", player2)
+
+    @player1 = Player.new("X", player1)
+    @player2 = Player.new("O", player2)
+
+    @board = Board.new(@player1, @player2)
+
   end
 
   def play
     loop do
       @board.print
 
-      @player1.move
+      @player1.move(@board.board)
       break if @board.winner? || @board.tie?
       
       @board.print
       
-      @player2.move
+      @player2.move(@board.board)
       break if @board.winner? || @board.tie?
     end
 
