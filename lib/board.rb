@@ -16,9 +16,9 @@ class Board
   def print
     puts ""
     puts "             #{print_cell(@board[0])} | #{print_cell(@board[1])} | #{print_cell(@board[2])} "
-    puts '            -----------'
+    puts '            ---+---+---'
     puts "             #{print_cell(@board[3])} | #{print_cell(@board[4])} | #{print_cell(@board[5])} "
-    puts '            -----------'
+    puts '            ---+---+---'
     puts "             #{print_cell(@board[6])} | #{print_cell(@board[7])} | #{print_cell(@board[8])} "
     puts ""
   end
