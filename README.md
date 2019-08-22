@@ -2,6 +2,8 @@
 
 Tic Tac Toe for the command line using Ruby v2.6.3.
 
+We recommend to open it on a wide screen.
+
 ## How to play
 
 Clone the repository:
@@ -25,7 +27,7 @@ ruby bin/main.rb
 
 ## Test it on gitpod
 
-[Gitpod/Tic-tac-toe-Ruby](https://gitpod.io#https://github.com/nicolasmarino99/Tic-tac-toe-Ruby)
+[Gitpod/Tic-tac-toe-Ruby](https://gitpod.io#https://github.com/nicolasmarino99/Tic-tac-toe-Ruby/tree/board)
 
 ## Authors
 
