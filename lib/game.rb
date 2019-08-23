@@ -1,54 +1,60 @@
 # frozen_string_literal: true
 
+require 'paint'
+require_relative './player.rb'
+require_relative './board.rb'
+
 class Game
-  attr_reader :winner
   def initialize
-    @board = [1, 2, 3,
-              4, 5, 6,
-              7, 8, 9]
-    @winner = ''
+    print_title
+    print 'Player 1 name: '
+    player1 = gets.chomp
+    print 'Player 2 name: '
+    player2 = gets.chomp
+    @player1 = Player.new(player1, 'X')
+    @player2 = Player.new(player2, 'O')
+    @board = Board.new(@player1, @player2)
   end
 
-  def winner?
-    return true if check_array?('rows')
-    return true if check_array?('columns')
+  def play
+    loop do
+      @board.print
 
-    diagonals = [
-      [@board[0], @board[4], @board[8]],
-      [@board[2], @board[4], @board[6]]
-    ]
-    diagonals.each do |diagonal|
-      return true if check_consecutive?(diagonal)
+      @player1.move(@board.board)
+      break if @board.winner? || @board.tie?
+
+      @board.print
+
+      @player2.move(@board.board)
+      break if @board.winner? || @board.tie?
     end
 
-    false
+    if @board.winner?
+      puts ''
+      puts Paint["The winner is '#{@board.winner}'!", :green, :bright]
+    else
+      puts "I's a tie."
+    end
+
+    @board.print
   end
 
   private
 
-  def check_array?(orientation)
-    3.times do |row|
-      array = []
-      3.times do |col|
-        array << if orientation == 'columns'
-                   @board[col * 3 + row]
-                 else
-                   @board[row * 3 + col]
-                 end
-      end
-      return true if check_consecutive?(array)
-    end
-    false
-  end
+  def print_title
+    puts <<-'TITLE'
 
-  def check_consecutive?(orientation)
-    if orientation.all? { |cell| cell == 'X' }
-      @winner = 'X'
-      return true
-    elsif orientation.all? { |cell| cell == 'O' }
-      @winner = 'O'
-      return true
-    end
-    false
+    __/\\\\\\\\\\\\\\\____________________________________/\\\\\\\\\\\\\\\_____________________________________________/\\\\\\\\\\\\\\\________________________________________
+     _\///////\\\/////____________________________________\///////\\\/////_____________________________________________\///////\\\/////_________________________________________
+      _______\/\\\________/\\\___________________________________\/\\\________________________________________________________\/\\\______________________________________________
+       _______\/\\\_______\///______/\\\\\\\\__/\\\\\\\\\\\_______\/\\\________/\\\\\\\\\________/\\\\\\\\__/\\\\\\\\\\\_______\/\\\___________/\\\\\________/\\\\\\\\____________
+        _______\/\\\________/\\\___/\\\//////__\///////////________\/\\\_______\////////\\\_____/\\\//////__\///////////________\/\\\_________/\\\///\\\____/\\\/////\\\___________
+         _______\/\\\_______\/\\\__/\\\_____________________________\/\\\_________/\\\\\\\\\\___/\\\_____________________________\/\\\________/\\\__\//\\\__/\\\\\\\\\\\____________
+          _______\/\\\_______\/\\\_\//\\\____________________________\/\\\________/\\\/////\\\__\//\\\____________________________\/\\\_______\//\\\__/\\\__\//\\///////_____________
+           _______\/\\\_______\/\\\__\///\\\\\\\\_____________________\/\\\_______\//\\\\\\\\/\\__\///\\\\\\\\_____________________\/\\\________\///\\\\\/____\//\\\\\\\\\\___________
+            _______\///________\///_____\////////______________________\///_________\////////\//_____\////////______________________\///___________\/////_______\//////////____________
+
+
+    TITLE
   end
 end
